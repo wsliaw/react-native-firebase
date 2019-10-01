@@ -116,38 +116,38 @@ RCT_EXPORT_METHOD(barcodeDetectorProcessImage:
 
 - (NSDictionary *)getEmailMap:(FIRVisionBarcodeEmail *)email {
   return @{
-      @"address": email.address,
-      @"body": email.body,
-      @"subject": email.subject,
+      @"address": email.address ?: @"",
+      @"body": email.body ?: @"",
+      @"subject": email.subject ?: @"",
   };
 }
 
 - (NSDictionary *)getPhoneMap:(FIRVisionBarcodePhone *)phone {
   return @{
-      @"number": phone.number,
+      @"number": phone.number ?: @"",
       @"type": @(phone.type),
   };
 }
 
 - (NSDictionary *)getSMSMap:(FIRVisionBarcodeSMS *)sms {
   return @{
-      @"message": sms.message,
-      @"phoneNumber": sms.phoneNumber,
+      @"message": sms.message ?: @"",
+      @"phoneNumber": sms.phoneNumber ?: @"",
   };
 }
 
 - (NSDictionary *)getURLMap:(FIRVisionBarcodeURLBookmark *)url {
   return @{
-      @"title": url.title,
-      @"url": url.url,
+      @"title": url.title ?: @"",
+      @"url": url.url ?: @"",
   };
 }
 
 - (NSDictionary *)getWiFiMap:(FIRVisionBarcodeWiFi *)wifi {
   return @{
       @"encryptionType": @(wifi.type),
-      @"password": wifi.password,
-      @"ssid": wifi.ssid,
+      @"password": wifi.password ?: @"",
+      @"ssid": wifi.ssid ?: @"",
   };
 }
 
@@ -157,27 +157,27 @@ RCT_EXPORT_METHOD(barcodeDetectorProcessImage:
 
 - (NSDictionary *)getPersonNameMap:(FIRVisionBarcodePersonName *)name {
   return @{
-      @"first": name.first,
-      @"formatted": name.formattedName,
-      @"last": name.last,
-      @"middle": name.middle,
-      @"prefix": name.prefix,
-      @"pronunciation": name.pronounciation,
-      @"suffix": name.suffix,
+      @"first": name.first ?: @"",
+      @"formatted": name.formattedName ?: @"",
+      @"last": name.last ?: @"",
+      @"middle": name.middle ?: @"",
+      @"prefix": name.prefix ?: @"",
+      @"pronunciation": name.pronounciation ?: @"",
+      @"suffix": name.suffix ?: @"",
   };
 }
 
 - (NSDictionary *)getAddressMap:(FIRVisionBarcodeAddress *)address {
   return @{
-      @"lines": address.addressLines,
+      @"lines": address.addressLines ?: @"",
       @"type": @(address.type),
   };
 }
 
 - (NSDictionary *)getContactInfoMap:(FIRVisionBarcodeContactInfo *)contactInfo {
   NSMutableDictionary *contactInfoFormatted = [@{
-      @"title": contactInfo.jobTitle,
-      @"organisation": contactInfo.organization,
+      @"title": contactInfo.jobTitle ?: @"",
+      @"organisation": contactInfo.organization ?: @"",
   } mutableCopy];
 
   // Name
